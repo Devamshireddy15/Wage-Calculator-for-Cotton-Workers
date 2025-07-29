@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotton Price Calculator for Workers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+    <div class="main-container">
+        <!-- Calculator Section -->
+        <div class="calculator-card">
+            <h1 class="header-title"><img src="./india.png" width="50px"> Cotton Price Calculator for Workers</h1>
+            
+            <p class="header-subtitle">Jai Jawan Jai Kisan</p>
+            
+            
+            <!-- Date Selection -->
+            <div class="mb-4">
+                <label class="form-label">Date</label>
+                <input type="date" class="form-control" id="selectedDate" value="">
+            </div>
+            
+            <!-- Worker Details Form -->
+            <div class="mb-3">
+                <label class="form-label">Worker Name</label>
+                <input type="text" class="form-control" id="workerName" placeholder="Enter worker Name">
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Cotton Picked in KGs</label>
+                <input type="number" class="form-control" id="cottonPicked" placeholder="Enter Cotton in KGs" min="0" step="0.1">
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Price Per KG</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="pricePerKg" placeholder="Enter Price in rupees (1-300)" min="1" max="300">
+                    <span class="input-group-text">1--300</span>
+                </div>
+            </div>
+            
+            <button class="btn btn-calculate" onclick="calculateWage()">Calculate</button>
+            
+            <div id="totalWageDisplay" class="total-wage-display" style="display: none;">
+                 Total Wage = ₹<span id="totalWageAmount">0</span>
+            </div>
+        </div>
+        
+        <!-- Records Section -->
+        <div class="records-section">
+            <h2 class="header-title">Dynamic Records</h2>
+            <p class="header-subtitle">All records (Total Workers-Total Cotton Picked-Total Amount)</p>
+            
+            <!-- Statistics Cards -->
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <div class="stats-card">
+                        <span class="stats-label">Total Workers</span>
+                        <span class="stats-value" id="totalWorkers">0</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-card">
+                        <span class="stats-label">Total Cotton (in KGs)</span>
+                        <span class="stats-value" ><span id="totalCotton">0</span>KGs</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-card">
+                        <span class="stats-label">Total Wages</span>
+                        <span class="stats-value">₹<span id="totalWages">0</span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Records Table -->
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Serial Number</th>
+                            <th>Date</th>
+                            <th>Worker Name</th>
+                            <th>Cotton Picked</th>
+                            <th>Price per KG</th>
+                            <th>Total Wage</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recordsTableBody">
+                        <!-- Records will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Farmer Name and Actions -->
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Farmer Name</label>
+                    <input type="text" class="form-control" id="farmerName" placeholder="Enter Farmer Name">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Mestri Name</label>
+                    <input type="text" class="form-control" id="MestriName" placeholder="Enter Mestri Name">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Farmer Phone Number</label>
+                    <input type="text" class="form-control" id="FarmerNo" placeholder="Enter Farmer Phone Number">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Mestri Phone Number</label>
+                    <input type="text" class="form-control" id="MestriNo" placeholder="Enter Mestri Phone Number">
+                </div>
+                <div class="col-md-3 mb-3 d-flex align-items-end foot">
+                    <button class="btn btn-save w-100 foot" onclick="saveRecords()">Save</button>
+                </div>
+                <div class="col-md-3 mb-3 d-flex align-items-end foot">
+                    <button class="btn btn-download w-100 " onclick="downloadPDF()">Download PDF</button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-3">
+                <small class="text-muted">Download Section<br>Thank You🤝</small>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
