@@ -219,13 +219,13 @@ const doc = new jsPDF();
             
 // Add header
 doc.setFontSize(18);
-doc.text('Cotton Price Report Of Workers', 105, 20, { align: 'center' });
+doc.text('Wages Report Of Cotton Workers', 105, 20, { align: 'center' });
             
 doc.setFontSize(12);
 doc.text(`Farmer Name : ${farmerName}`, 20, 35);
-doc.text(`Farmer Phone Number : ${FarmerNo}`, 20, 42);
-doc.text(`Mestri Name : ${MestriName}`, 120, 35);
-doc.text(`Mestri Phone Number : ${MestriNo}`, 120, 42);
+doc.text(`Farmer Mobile Number : ${FarmerNo}`, 20, 42);
+doc.text(`Team Leader Name : ${MestriName}`, 120, 35);
+doc.text(`Team Leader Mobile Number : ${MestriNo}`, 120, 42);
 doc.text(`Date : ${formatDate(fixedDate)}`, 20, 49);
 doc.text(`Total Workers : ${records.length}`, 20, 56);
             
